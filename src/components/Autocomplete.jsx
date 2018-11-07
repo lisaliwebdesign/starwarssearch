@@ -44,7 +44,7 @@ class Autocomplete extends Component {
             .then((response) => {
                 const data = response.data.results;
                 data.map((item, index) => (     
-                        filteredSuggestions.push(item.name)
+                        filteredSuggestions.push(item)
                     ));
                 this.setState({filteredSuggestions});
                 
@@ -67,6 +67,10 @@ class Autocomplete extends Component {
   };
 
   onClick = e => {
+    if (this.props.onSelect){
+        this.props.onSelect(e.currentTarget.innerText, e.target.getAttribute('value'));
+    }
+ 
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions: [],
@@ -118,6 +122,7 @@ onFocus = e => {
     }
 };
 
+
   render() {
     const {
       onChange,
@@ -140,9 +145,10 @@ onFocus = e => {
             <List>
             {filteredSuggestions.map((suggestion, index) => {
               return (                        
-                <ListItem key={suggestion} onClick={onClick}>
-                   {suggestion}                      
+                <ListItem key={suggestion.name} value={suggestion.url} onClick={onClick}>
+                   {suggestion.name}  
                 </ListItem>
+
               );
             })}
            </List>

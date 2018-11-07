@@ -4,7 +4,7 @@ import {
   NavBar, // The wrapper for the entire nav (nav element)
   HomeLink, // A link (a tag) which will take the user home
   HomeImage, // Image of a house
-  CityName // The name of the city
+  CharName // The name of the Character
 } from "../elements/nav";
 import homeImage from "../images/home.png";
 
@@ -15,7 +15,7 @@ props:
 
 export default class Nav extends React.Component {
   static propTypes = {
-    city: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired
   };
 
   render() {
@@ -24,7 +24,7 @@ export default class Nav extends React.Component {
         <HomeLink to="/">
           <HomeImage src={homeImage} />
         </HomeLink>
-        <CityName>{this.props.city}</CityName>
+        <CharName>{this.props.name}</CharName>
       </NavBar>
     );
   }

@@ -10,10 +10,9 @@ import {
 
 } from "../elements/home";
 
-
 import logo from "../images/star-wars-seeklogo.svg";
 
-import Character from "../stores/CharacterStore"
+import CharacterStore from "../stores/CharacterStore"
 
 export default class Home extends React.Component {
   state = {
@@ -24,16 +23,6 @@ export default class Home extends React.Component {
   componentDidMount() {
       this.loadData()
   }
-//  loadData = () => {
-//      const filePath = "https://swapi.co/api/people/"
-//      axios.get(filePath)
-//            .then((response) => {
-//                const people = response.data.results
-//                this.setState({people});               
-//            })
-//            .catch((error) => {
-//            });
-//  };
 
   loadData = () => {
       const filePath = "https://swapi.co/api/people/"
@@ -42,7 +31,7 @@ export default class Home extends React.Component {
                 const data = response.data.results;
                 const People = [];
                  data.map((item, index) => (     
-                        People.push(item.name)
+                        People.push(item)
                     ))
                 this.setState({People});
                 
@@ -60,6 +49,9 @@ export default class Home extends React.Component {
              <Autocomplete
         suggestions={this.state.People}  
         serverUrl ="https://swapi.co/api/people/?search="
+        onSelect={selectedValue => {
+              this.props.history.push(`/people/${selectedValue}`);
+            }}
       />
         </Form>
 

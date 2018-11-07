@@ -4,7 +4,6 @@ import axios from "axios";
 class CharacterStore {
   //@observable time = new Date().toISOString();
   @observable character = null;
-  @observable people = null;
   @observable loadCharacterError = false;
 
 //  @action
@@ -13,16 +12,13 @@ class CharacterStore {
 //  };
 
   @action
-  loadCharacter = async number => {
+  loadCharacter = async char => {
     try {
+          let filePath = "https://swapi.co/api/people/?search="+char;
       const response = await axios.get(
-        "https://swapi.co/api/people/?search=",
-        {
-          params: { number }
-        }
+        filePath
       );
-
-      this.character = response.data;
+      this.character = response.data.results[0];
     } catch (error) {
       this.loadCharacterError = true;
     }
