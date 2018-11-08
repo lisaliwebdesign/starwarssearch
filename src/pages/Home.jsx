@@ -13,11 +13,8 @@ import {
 
 import logo from "../images/star-wars-seeklogo.svg";
 
-<<<<<<< Updated upstream
-import Character from "../stores/CharacterStore"
-=======
+
 import PageStore from "../stores/PageStore"
->>>>>>> Stashed changes
 
 export default class Home extends React.Component {
   state = {
@@ -28,16 +25,6 @@ export default class Home extends React.Component {
   componentDidMount() {
       this.loadData()
   }
-//  loadData = () => {
-//      const filePath = "https://swapi.co/api/people/"
-//      axios.get(filePath)
-//            .then((response) => {
-//                const people = response.data.results
-//                this.setState({people});               
-//            })
-//            .catch((error) => {
-//            });
-//  };
 
   loadData = () => {
       const filePath = "https://swapi.co/api/people/"

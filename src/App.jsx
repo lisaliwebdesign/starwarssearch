@@ -15,9 +15,6 @@ export default class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={Home} />
-<<<<<<< Updated upstream
-            <Route path="/:people" exact component={People} />
-=======
             <Route path="/people/:people" exact component={Page} />
             <Route path="/planets/:planets" exact component={Page} />
             <Route path="/films/:films" exact component={Page} />
@@ -25,7 +22,6 @@ export default class App extends Component {
             <Route path="/species/:species" exact component={Page} />
             <Route path="/vehicles/:vehicles" exact component={Page} />
             <Route path="/starships/:starships" exact component={Page} />
->>>>>>> Stashed changes
           </Switch>
         </BrowserRouter>
       </Provider>
