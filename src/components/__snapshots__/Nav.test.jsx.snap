@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Componet><Nav> - renders component 1`] = `
+<styled.nav>
+  <Styled(Link)
+    to="/"
+  >
+    <styled.img
+      src="home.png"
+    />
+  </Styled(Link)>
+  <styled.h1>
+    test
+  </styled.h1>
+</styled.nav>
+`;

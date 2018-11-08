@@ -8,10 +8,6 @@ import {
 } from "../elements/nav";
 import homeImage from "../images/home.png";
 
-/*
-props:
-- city (string)
-*/
 
 export default class Nav extends React.Component {
   static propTypes = {

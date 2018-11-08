@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Componet><Autocomplete> - renders component 1`] = `
+<Fragment>
+  <styled.input
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    type="text"
+    value=""
+  />
+</Fragment>
+`;
