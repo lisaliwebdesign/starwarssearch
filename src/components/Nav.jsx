@@ -8,7 +8,6 @@ import {
 } from "../elements/nav";
 import homeImage from "../images/home.png";
 
-
 export default class Nav extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired

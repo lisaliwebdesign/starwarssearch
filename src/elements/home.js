@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import * as variables from './variables.js';
+import * as variables from "./variables.js";
 
 const Container = styled.section`
   width: 100vw;
@@ -27,7 +27,6 @@ const Label = styled.label`
   color: #ffffff;
 `;
 
-
 const Logo = styled.img`
   width: 300px;
   position: absolute;
@@ -35,9 +34,4 @@ const Logo = styled.img`
   right: 50px;
 `;
 
-export {
-  Container,
-  Form,
-  Label,
-  Logo
-};
+export { Container, Form, Label, Logo };
