@@ -4,23 +4,24 @@ import { inject, observer } from "mobx-react";
 import { Motion, spring } from "react-motion";
 import Nav from "../components/Nav";
 import {
-  PageContainer,
-  DataContainer,
-  DataContainerItem,
-  ItemDivLabel,
-  ItemDiv,
-  Link
+  PageContainer,//Set div tag for page
+  DataContainer, //Set List ul for data section
+  DataContainerItem, //Set List item li for data display
+  ItemDivLabel,// Set div list item for data title
+  ItemDiv, // Set div list item for data value
+  Link // Set a link tag
  
 } from "../elements/page";
 
 @inject( "PageStore")
 @observer
 export default class Page extends React.Component {
-   componentDidMount() {
+    //Page onload
+    componentDidMount() {
         let isSearch = !this.props.location.state
         this.props.PageStore.loadData(isSearch,this.props.location.pathname,this.props.match.params.people);  
     }
-    
+    //Update comopment when received new data
     componentWillReceiveProps(nextProps) { 
         let isSearch = !nextProps.location.state
         nextProps.PageStore.loadData(isSearch, nextProps.location.pathname);
@@ -34,18 +35,21 @@ export default class Page extends React.Component {
               .forEach(key => delete data[key]);
         return data
     }
-    getItemData =(item,val)=>{
-        return this.props.CharacterStore.loadCharacterData(item,val);
-    }
+    //Click function for data
     onClick = e => {
        this.props.history.push({ 
           pathname:`/${e.currentTarget.getAttribute('value')}/${parseInt(e.currentTarget.text.trim())}`,
           state: {prePage:this.props.location}
       });
     };
+    
+    
     singleItem =(item,val)=>{
+        //Replace'_' with space
         item =item.replace("_", " ");
+        //Change val null value to empty string 
         val = val === null?'n/a':val;
+        //Build Link element
         const setLink = (val)=>{
             let linkString = val.split("/");
             let linkType =linkString[linkString.length-3];
@@ -62,8 +66,7 @@ export default class Page extends React.Component {
                     allStrings.push(setLink(entry));
                 });
                 val = allStrings;
-            }
- 
+            } 
         }
         //Check if value is a link
         if (String(val).includes('https')){
@@ -76,13 +79,14 @@ export default class Page extends React.Component {
                 </Fragment>
                 )         
     }
+    
+    //Display data list
     displayItem =(data)=>{
      return Object.keys(this.filterData(data)).map((item, i) => (             
                     <DataContainerItem key={i}>
                     {this.singleItem(item,data[item] )}
                     </DataContainerItem>  
         ))
-
     }
 
     render() {

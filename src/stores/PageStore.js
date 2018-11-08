@@ -8,8 +8,7 @@ class PageStore {
 
   @action
     loadData = async(isSearch,path,char)  => {
-        try {
-           // let filePath = "https://swapi.co/api" + path;
+        try {        
             let filePath = isSearch?"https://swapi.co/api/people/?search="+char : "https://swapi.co/api"+path;
             const response = await axios.get(
                     filePath
@@ -17,7 +16,6 @@ class PageStore {
             this.pageData = isSearch? response.data.results[0]:response.data;
             let pName =path.split("/");
             this.pageName = pName[1]+':';
-              //this.pageData = response.data;
         } catch (error) {
             this.loadDataError = true;
         }
