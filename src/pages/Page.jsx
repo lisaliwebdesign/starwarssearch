@@ -45,6 +45,7 @@ export default class Page extends React.Component {
     };
     singleItem =(item,val)=>{
         item =item.replace("_", " ");
+        val = val === null?'n/a':val;
         const setLink = (val)=>{
             let linkString = val.split("/");
             let linkType =linkString[linkString.length-3];

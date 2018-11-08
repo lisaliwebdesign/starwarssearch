@@ -10,11 +10,10 @@ import {
 
 } from "../elements/home";
 
-
 import logo from "../images/star-wars-seeklogo.svg";
 
-
 import PageStore from "../stores/PageStore"
+
 
 export default class Home extends React.Component {
   state = {
@@ -33,7 +32,7 @@ export default class Home extends React.Component {
                 const data = response.data.results;
                 const People = [];
                  data.map((item, index) => (     
-                        People.push(item.name)
+                        People.push(item)
                     ))
                 this.setState({People});
                 
@@ -51,6 +50,9 @@ export default class Home extends React.Component {
              <Autocomplete
         suggestions={this.state.People}  
         serverUrl ="https://swapi.co/api/people/?search="
+        onSelect={selectedValue => {
+              this.props.history.push(`/people/${selectedValue}`);
+            }}
       />
         </Form>
 

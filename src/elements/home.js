@@ -1,18 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import * as variables from './variables.js';
 
 const Container = styled.section`
   width: 100vw;
   height: 100vh;
   background: #ff057c;
-  background-image: linear-gradient(
-    -225deg,
-    #000000 0%,
-    #000103 19%,
-    #5A79A1 50%,
-    #EEF8FC 67%,
-    #2E3546 100%
-  );
+  background-image: ${variables.bg};
 `;
 
 const Form = styled.form`
@@ -35,7 +29,7 @@ const Label = styled.label`
 
 
 const Logo = styled.img`
-  width: 200px;
+  width: 300px;
   position: absolute;
   top: 25px;
   right: 50px;

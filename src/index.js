@@ -5,7 +5,6 @@ import registerServiceWorker from "./registerServiceWorker";
 
 // Most styling will be done using styled-components but here we'll
 // define some global reset and base styles using straight up CSS
-import "./styles/autocomplete.css";
 import "./styles/reset.css";
 import "./styles/base.css";
 

@@ -1,6 +1,13 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import {
+  List, //Suggestion List
+  ListItem, //Suggestion List item
+  NoDataContainer, //No data wrapper (div) 
+  AutoSuggest // User enter input
+
+} from "../elements/autocomplete";
 
 class Autocomplete extends Component {
   static propTypes = {
@@ -37,7 +44,7 @@ class Autocomplete extends Component {
             .then((response) => {
                 const data = response.data.results;
                 data.map((item, index) => (     
-                        filteredSuggestions.push(item.name)
+                        filteredSuggestions.push(item)
                     ));
                 this.setState({filteredSuggestions});
                 
@@ -60,6 +67,10 @@ class Autocomplete extends Component {
   };
 
   onClick = e => {
+    if (this.props.onSelect){
+        this.props.onSelect(e.currentTarget.innerText, e.target.getAttribute('value'));
+    }
+ 
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions: [],
@@ -100,10 +111,8 @@ onFocus = e => {
     if (e.currentTarget.value === '') {
         const {suggestions} = this.props;
         const userInput = e.currentTarget.value;
-
-        // Filter our suggestions that don't contain the user's input
+        // Display all data
         const filteredSuggestions = suggestions;
-
         this.setState({
             activeSuggestion: 0,
             filteredSuggestions,
@@ -112,6 +121,7 @@ onFocus = e => {
         });
     }
 };
+
 
   render() {
     const {
@@ -132,35 +142,36 @@ onFocus = e => {
     if (showSuggestions) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul className="suggestions">
+            <List>
             {filteredSuggestions.map((suggestion, index) => {
-              return (
-                <li key={suggestion} onClick={onClick}>
-                  {suggestion}
-                </li>
+              return (                        
+                <ListItem key={suggestion.name} value={suggestion.url} onClick={onClick}>
+                   {suggestion.name}  
+                </ListItem>
+
               );
             })}
-          </ul>
+           </List>
         );
       } else {
         suggestionsListComponent = (
-          <div className="no-suggestions">
-            <em>No suggestions</em>
-          </div>
+  
+          <NoDataContainer>
+                  No suggestions
+          </NoDataContainer>
+          
         );
       }
     }
 
     return (
       <Fragment>
-        <input
-          type="text"
+          <AutoSuggest type="text"
           onChange={onChange}
           onKeyDown={onKeyDown}
           value={userInput}
           onFocus={onFocus}
-          className="suggestions-input"
-        />
+          ></AutoSuggest>       
         {suggestionsListComponent}
       </Fragment>
     );
