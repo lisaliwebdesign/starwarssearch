@@ -45,17 +45,19 @@ export default class Home extends React.Component {
     return (
       <Container>
         <Logo src={logo} />
-        <Form>
+    <Form>
           <Label>Search for Character</Label>
              <Autocomplete
-                suggestions={this.state.People}  
-                serverUrl ="https://swapi.co/api/people/?search="
-                onSelect={selectedValue => {
-                this.props.history.push(`/people/${selectedValue}`);
-                }}
-            />
+        suggestions={this.state.People}  
+        serverUrl ="https://swapi.co/api/people/?search="
+        onSelect={selectedValue => {
+              this.props.history.push(`/people/${selectedValue}`);
+            }}
+      />
         </Form>
 
+     
+    
       </Container>
     );
   }
