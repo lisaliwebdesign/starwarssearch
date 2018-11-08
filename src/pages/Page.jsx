@@ -95,7 +95,7 @@ export default class Page extends React.Component {
         }
         return (
                  <PageContainer>
-                    <Nav name={PageStore.pageData.name?PageStore.pageData.name:PageStore.pageData.title}/>
+                    <Nav name={PageStore.pageName + (PageStore.pageData.name?PageStore.pageData.name:PageStore.pageData.title)}/>
                     <DataContainer>    
                     {this.displayItem(PageStore.pageData)}
                     </DataContainer>

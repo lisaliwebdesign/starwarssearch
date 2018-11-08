@@ -4,6 +4,7 @@ import axios from "axios";
 class PageStore {
   @observable pageData = null;
   @observable loadDataError = false;
+  @observable pageName = "";
 
   @action
     loadData = async(isSearch,path,char)  => {
@@ -14,6 +15,8 @@ class PageStore {
                     filePath
                     );
             this.pageData = isSearch? response.data.results[0]:response.data;
+            let pName =path.split("/");
+            this.pageName = pName[1]+':';
               //this.pageData = response.data;
         } catch (error) {
             this.loadDataError = true;

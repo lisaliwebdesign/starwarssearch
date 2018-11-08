@@ -20,10 +20,13 @@ const DataContainer = styled.ul`
   outline-color: rgb(255, 255, 0);  
   padding:20px;
   position: absolute;
-  top:80px;
+  top:150px;
   background-color:#000000;
   border-radius: 25px;
   box-shadow:0 0 50px #ffff00 ,inset 0 0 50px #ffff00;
+  @media (max-width: 768px) {
+  width: 90%;  
+  }
 `;
 
 const DataContainerItem = styled.li`
@@ -41,6 +44,7 @@ const ItemDiv= styled.div`
   display: inline-block;
   text-shadow: 0 0 10px #1D388A;
   width: 65%;
+  font-size: 1.5rem;
 `;
 const Link= styled.a`
   color: #1D388A !important;
