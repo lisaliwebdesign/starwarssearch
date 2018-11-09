@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<pages><Page> - renders component 1`] = `
+<div
+  class="sc-ifAKCX fKJMqe"
+>
+  Loading...
+</div>
+`;
+
+exports[`<pages><Page> - renders with data 1`] = `
+<Page
+  Nav={
+    <div>
+      testnav
+    </div>
+  }
+  PageStore={
+    Object {
+      "pageData": Object {
+        "name": "testpagename",
+      },
+      "pageName": "testpagename",
+    }
+  }
+/>
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<components><PageItem> - renders component 1`] = `
+<ul
+  class="sc-bwzfXH hzgMjS"
+>
+  <li
+    class="sc-htpNat VijVo"
+  >
+    <div
+      class="sc-bxivhb dMfqcO"
+    >
+      test
+    </div>
+    <div
+      class="sc-ifAKCX eYumWf"
+    >
+      str1
+    </div>
+  </li>
+</ul>
+`;

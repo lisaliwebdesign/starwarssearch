@@ -11,6 +11,10 @@ import {
 @inject("PageStore")
 @observer
 export default class Page extends React.Component {
+  state = {
+    DataContainer: [],
+    status: "initial"
+  };
   //Page onload
   componentDidMount() {
     let isSearch = !this.props.location.state;

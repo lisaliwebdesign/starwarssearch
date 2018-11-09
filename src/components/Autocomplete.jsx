@@ -4,9 +4,8 @@ import axios from "axios";
 import {
   List, //Suggestion List
   ListItem, //Suggestion List item
-  NoDataContainer, //No data wrapper (div) 
+  NoDataContainer, //No data wrapper (div)
   AutoSuggest // User enter input
-
 } from "../elements/autocomplete";
 
 class Autocomplete extends Component {
@@ -32,27 +31,24 @@ class Autocomplete extends Component {
       userInput: ""
     };
   }
-  
-  // Load data from user input 
-    getData =(val)=>{
-      // Get requet url
-      const { serverUrl } = this.props;
-      const filteredSuggestions = [];
-      // Add url parameters
-      let filePath = serverUrl+val;
-       axios.get(filePath)
-            .then((response) => {
-                const data = response.data.results;
-                data.map((item, index) => (     
-                        filteredSuggestions.push(item)
-                    ));
-                this.setState({filteredSuggestions});
-                
-            })
-            .catch((error) => {
-            });
+
+  // Load data from user input
+  getData = val => {
+    // Get requet url
+    const { serverUrl } = this.props;
+    const filteredSuggestions = [];
+    // Add url parameters
+    let filePath = serverUrl + val;
+    axios
+      .get(filePath)
+      .then(response => {
+        const data = response.data.results;
+        data.map((item, index) => filteredSuggestions.push(item));
+        this.setState({ filteredSuggestions });
+      })
+      .catch(error => {});
     return filteredSuggestions;
-  }
+  };
 
   onChange = e => {
     const { suggestions } = this.props;
@@ -67,10 +63,13 @@ class Autocomplete extends Component {
   };
 
   onClick = e => {
-    if (this.props.onSelect){
-        this.props.onSelect(e.currentTarget.innerText, e.target.getAttribute('value'));
+    if (this.props.onSelect) {
+      this.props.onSelect(
+        e.currentTarget.innerText,
+        e.target.getAttribute("value")
+      );
     }
- 
+
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions: [],
@@ -105,23 +104,22 @@ class Autocomplete extends Component {
       this.setState({ activeSuggestion: activeSuggestion + 1 });
     }
   };
-  
-onFocus = e => {
-    // List all when user not entered anything    
-    if (e.currentTarget.value === '') {
-        const {suggestions} = this.props;
-        const userInput = e.currentTarget.value;
-        // Display all data
-        const filteredSuggestions = suggestions;
-        this.setState({
-            activeSuggestion: 0,
-            filteredSuggestions,
-            showSuggestions: true,
-            userInput: ''
-        });
-    }
-};
 
+  onFocus = e => {
+    // List all when user not entered anything
+    if (e.currentTarget.value === "") {
+      const { suggestions } = this.props;
+      const userInput = e.currentTarget.value;
+      // Display all data
+      const filteredSuggestions = suggestions;
+      this.setState({
+        activeSuggestion: 0,
+        filteredSuggestions,
+        showSuggestions: true,
+        userInput: ""
+      });
+    }
+  };
 
   render() {
     const {
@@ -142,36 +140,36 @@ onFocus = e => {
     if (showSuggestions) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-            <List>
+          <List>
             {filteredSuggestions.map((suggestion, index) => {
-              return (                        
-                <ListItem key={suggestion.name} value={suggestion.url} onClick={onClick}>
-                   {suggestion.name}  
+              return (
+                <ListItem
+                  key={suggestion.name}
+                  value={suggestion.url}
+                  onClick={onClick}
+                >
+                  {suggestion.name}
                 </ListItem>
-
               );
             })}
-           </List>
+          </List>
         );
       } else {
         suggestionsListComponent = (
-  
-          <NoDataContainer>
-                  No suggestions
-          </NoDataContainer>
-          
+          <NoDataContainer>No suggestions</NoDataContainer>
         );
       }
     }
 
     return (
       <Fragment>
-          <AutoSuggest type="text"
+        <AutoSuggest
+          type="text"
           onChange={onChange}
           onKeyDown={onKeyDown}
           value={userInput}
           onFocus={onFocus}
-          ></AutoSuggest>       
+        />
         {suggestionsListComponent}
       </Fragment>
     );

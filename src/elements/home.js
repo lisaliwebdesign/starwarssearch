@@ -33,5 +33,11 @@ const Logo = styled.img`
   top: 25px;
   right: 50px;
 `;
+const Loading = styled.div`
+  width: 100vw;
+  position: absolute;
+  top: 50vh;
+  text-align: center;
+`;
 
-export { Container, Form, Label, Logo };
+export { Container, Form, Label, Logo, Loading };

@@ -1,13 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Componet><Autocomplete> - renders component 1`] = `
-<Fragment>
-  <styled.input
-    onChange={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    type="text"
-    value=""
-  />
-</Fragment>
+exports[`<components><Autocomplete - renders component 1`] = `
+<input
+  class="sc-bxivhb kUxKBM"
+  type="text"
+  value=""
+>
+  
+</input>
+`;
+
+exports[`<components><Autocomplete> - showSuggestions no 1`] = `
+<input
+  className="sc-bxivhb kUxKBM"
+  onChange={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  type="text"
+  value=""
+/>
 `;

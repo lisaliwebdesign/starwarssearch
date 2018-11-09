@@ -10,9 +10,9 @@ import {
 } from "../elements/page";
 
 export default class PageItem extends React.Component {
-  //  static propTypes = {
-  //    data: PropTypes.string.isRequired
-  //  };
+  static propTypes = {
+    data: PropTypes.object
+  };
 
   //Filter 'created','edited','url' data out for displaying
   filterData = data => {

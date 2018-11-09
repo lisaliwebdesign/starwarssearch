@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Componet><Nav> - renders component 1`] = `
+exports[`<components><Nav> - renders component 1`] = `
 <styled.nav>
   <Styled(Link)
     to="/"
