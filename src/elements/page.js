@@ -17,8 +17,7 @@ const DataContainer = styled.ul`
   border: none;
   outline-color: rgb(255, 255, 0);
   padding: 20px;
-  position: absolute;
-  top: 150px;
+  margin-top: 100px;
   background-color: #000000;
   border-radius: 25px;
   box-shadow: 0 0 50px #ffff00, inset 0 0 50px #ffff00;
